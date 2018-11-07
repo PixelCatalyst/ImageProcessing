@@ -1,8 +1,8 @@
-package com.pixelcatalyst.imgp;
+package com.pixelcatalyst.imgp.image;
 
 import java.util.ArrayList;
 
-import com.pixelcatalyst.imgp.filters.NormalizedColor;
+import com.pixelcatalyst.imgp.color.NormalizedColor;
 
 public class NeighborStencil {
     private class Offset {

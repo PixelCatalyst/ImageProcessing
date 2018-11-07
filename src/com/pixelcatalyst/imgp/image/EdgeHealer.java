@@ -1,4 +1,4 @@
-package com.pixelcatalyst.imgp;
+package com.pixelcatalyst.imgp.image;
 
 public class EdgeHealer {
     private int left;

@@ -1,6 +1,7 @@
-package com.pixelcatalyst.imgp;
+package com.pixelcatalyst.imgp.core;
 
-import com.pixelcatalyst.imgp.filters.*;
+import com.pixelcatalyst.imgp.filter.*;
+import com.pixelcatalyst.imgp.image.Image;
 
 import processing.core.PApplet;
 
@@ -9,7 +10,7 @@ public class ImageProcessing extends PApplet {
     private Image test;
 
     public static void main(String[] args) {
-        PApplet.main("com.pixelcatalyst.imgp.ImageProcessing");
+        PApplet.main("com.pixelcatalyst.imgp.core.ImageProcessing");
     }
 
     public void settings() {

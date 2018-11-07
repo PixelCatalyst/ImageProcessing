@@ -1,4 +1,4 @@
-package com.pixelcatalyst.imgp.filters;
+package com.pixelcatalyst.imgp.color;
 
 public class ColorFormat {
     public enum Channel {

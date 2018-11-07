@@ -1,6 +1,6 @@
-package com.pixelcatalyst.imgp;
+package com.pixelcatalyst.imgp.image;
 
-import com.pixelcatalyst.imgp.filters.NormalizedColor;
+import com.pixelcatalyst.imgp.color.NormalizedColor;
 
 public class Neighbor {
     private NormalizedColor color;

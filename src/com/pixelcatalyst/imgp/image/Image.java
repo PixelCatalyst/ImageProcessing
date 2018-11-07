@@ -1,9 +1,9 @@
-package com.pixelcatalyst.imgp;
+package com.pixelcatalyst.imgp.image;
 
-import com.pixelcatalyst.imgp.EdgeHealer.HealMethod;
-import com.pixelcatalyst.imgp.filters.ColorFormat;
-import com.pixelcatalyst.imgp.filters.NormalizedColor;
-import com.pixelcatalyst.imgp.filters.ColorFormat.Channel;
+import com.pixelcatalyst.imgp.color.ColorFormat;
+import com.pixelcatalyst.imgp.color.NormalizedColor;
+import com.pixelcatalyst.imgp.color.ColorFormat.Channel;
+import com.pixelcatalyst.imgp.image.EdgeHealer.HealMethod;
 
 import processing.core.PImage;
 import processing.core.PApplet;

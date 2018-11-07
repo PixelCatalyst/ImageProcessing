@@ -1,7 +1,9 @@
-package com.pixelcatalyst.imgp.filters;
+package com.pixelcatalyst.imgp.filter;
 
-import com.pixelcatalyst.imgp.Neighbor;
-import com.pixelcatalyst.imgp.NeighborStencil;
+import com.pixelcatalyst.imgp.color.ColorFormat;
+import com.pixelcatalyst.imgp.color.NormalizedColor;
+import com.pixelcatalyst.imgp.image.Neighbor;
+import com.pixelcatalyst.imgp.image.NeighborStencil;
 
 import processing.core.PApplet;
 

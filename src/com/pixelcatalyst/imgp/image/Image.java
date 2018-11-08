@@ -6,14 +6,17 @@ import com.pixelcatalyst.imgp.color.ColorFormat.Channel;
 import com.pixelcatalyst.imgp.image.EdgeHealer.HealMethod;
 
 import processing.core.PImage;
+import processing.core.PVector;
 import processing.core.PApplet;
 import processing.core.PConstants;
 
 public class Image {
     private PApplet parent;
     private PImage img;
+    private PVector position;
+    private Sector drawSector;
     private ColorFormat format;
-    private EdgeHealer edge = null;
+    private EdgeHealer edge;
     private boolean notLoaded = true;
     private boolean stale = false;
 
@@ -29,6 +32,7 @@ public class Image {
 
     private void init(PApplet parent) {
         this.parent = parent;
+        position = new PVector(0.0f, 0.0f);
         format = new ColorFormat(Channel.Red, Channel.Green, Channel.Blue);
         edge = new EdgeHealer(0, 0, getWidth() - 1, getHeight() - 1);
         edge.setHealMethod(HealMethod.Extend);
@@ -40,6 +44,18 @@ public class Image {
 
     public int getHeight() {
         return img.height;
+    }
+
+    public void setX(int x) {
+        position.x = x;
+    }
+
+    public void setY(int y) {
+        position.y = y;
+    }
+
+    public void setDrawSector(Sector drawSector) {
+        this.drawSector = drawSector;
     }
 
     public NormalizedColor getPixel(int x, int y) {
@@ -81,6 +97,12 @@ public class Image {
     }
 
     public void draw() {
-        parent.image(img, 0.0f, 0.0f);
+        if (drawSector == null)
+            parent.image(img, position.x, position.y);
+        else {
+            parent.image(img, position.x, position.y, drawSector.getWidth(), drawSector.getHeight(), drawSector.getX(),
+                    drawSector.getY(), drawSector.getWidth() + drawSector.getX(),
+                    drawSector.getHeight() + drawSector.getY());
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.pixelcatalyst.imgp.image;
 
 import com.pixelcatalyst.imgp.color.ColorFormat;
 import com.pixelcatalyst.imgp.color.NormalizedColor;
+import com.pixelcatalyst.imgp.drawable.Drawable;
 import com.pixelcatalyst.imgp.color.ColorFormat.Channel;
 import com.pixelcatalyst.imgp.image.EdgeHealer.HealMethod;
 
@@ -10,10 +11,8 @@ import processing.core.PVector;
 import processing.core.PApplet;
 import processing.core.PConstants;
 
-public class Image {
-    private PApplet parent;
+public class Image extends Drawable {
     private PImage img;
-    private PVector position;
     private Sector drawSector;
     private ColorFormat format;
     private EdgeHealer edge;
@@ -21,18 +20,18 @@ public class Image {
     private boolean stale = false;
 
     public Image(String file, PApplet parent) {
+        super(parent);
         img = parent.loadImage(file);
-        init(parent);
+        init();
     }
 
     public Image(int width, int height, PApplet parent) {
+        super(parent);
         img = parent.createImage(width, height, PConstants.ARGB);
-        init(parent);
+        init();
     }
 
-    private void init(PApplet parent) {
-        this.parent = parent;
-        position = new PVector(0.0f, 0.0f);
+    private void init() {
         format = new ColorFormat(Channel.Red, Channel.Green, Channel.Blue);
         edge = new EdgeHealer(0, 0, getWidth() - 1, getHeight() - 1);
         edge.setHealMethod(HealMethod.Extend);
@@ -44,14 +43,6 @@ public class Image {
 
     public int getHeight() {
         return img.height;
-    }
-
-    public void setX(int x) {
-        position.x = x;
-    }
-
-    public void setY(int y) {
-        position.y = y;
     }
 
     public void setDrawSector(Sector drawSector) {
@@ -96,11 +87,12 @@ public class Image {
         }
     }
 
-    public void draw() {
+    @Override
+    protected void draw(PApplet parent) {
         if (drawSector == null)
-            parent.image(img, position.x, position.y);
+            parent.image(img, getX(), getY());
         else {
-            parent.image(img, position.x, position.y, drawSector.getWidth(), drawSector.getHeight(), drawSector.getX(),
+            parent.image(img, getX(), getY(), drawSector.getWidth(), drawSector.getHeight(), drawSector.getX(),
                     drawSector.getY(), drawSector.getWidth() + drawSector.getX(),
                     drawSector.getHeight() + drawSector.getY());
         }

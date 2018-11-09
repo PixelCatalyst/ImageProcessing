@@ -7,7 +7,6 @@ import com.pixelcatalyst.imgp.color.ColorFormat.Channel;
 import com.pixelcatalyst.imgp.image.EdgeHealer.HealMethod;
 
 import processing.core.PImage;
-import processing.core.PVector;
 import processing.core.PApplet;
 import processing.core.PConstants;
 

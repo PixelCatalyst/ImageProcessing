@@ -92,6 +92,12 @@ public class NormalizedColor {
         B = Math.abs(B);
     }
 
+    public void complement() {
+        R = 1.0f - R;
+        G = 1.0f - G;
+        B = 1.0f - B;
+    }
+
     public NormalizedColor add(NormalizedColor other) {
         this.R += other.R;
         this.G += other.G;

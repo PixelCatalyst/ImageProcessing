@@ -52,6 +52,10 @@ public class Image extends Drawable {
         return img.height;
     }
 
+    public void resize(int width, int height) {
+        img.resize(width, height);
+    }
+
     public void setDrawSector(Sector drawSector) {
         this.drawSector = drawSector;
     }

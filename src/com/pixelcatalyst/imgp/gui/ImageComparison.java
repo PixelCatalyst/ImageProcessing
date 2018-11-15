@@ -9,8 +9,9 @@ import processing.core.PApplet;
 public class ImageComparison extends Drawable {
     private Image left;
     private Image right;
+    private SliderBar slider;
     private int width;
-    private float defBarPos;
+    private float defRatio;
 
     public ImageComparison(Image left, Image right, PApplet parent) {
         super(parent);
@@ -19,16 +20,21 @@ public class ImageComparison extends Drawable {
         if ((left.getWidth() != right.getWidth()) || (left.getHeight() != right.getHeight()))
             PApplet.println("Images in " + this.getClass().getSimpleName() + " should be the same size.");
         width = Math.max(left.getWidth(), right.getWidth());
-        defBarPos = 0.5f;
+        defRatio = 0.5f;
     }
 
-    public void setDefaultBarPos(float value) {
-        defBarPos = Math.max(0.0f, Math.min(1.0f, value));
+    public void setDefaultRatio(float value) {
+        defRatio = Math.max(0.0f, Math.min(1.0f, value));
+    }
+
+    public void attachSliderBar(SliderBar slider) {
+        this.slider = slider;
     }
 
     @Override
     protected void draw(PApplet parent) {
-        int division = (int) (defBarPos * width);
+        float barPosRatio = (slider == null ? defRatio : slider.getPosRatio());
+        int division = (int) (barPosRatio * width);
         Sector sectorLeft = new Sector(0, 0, division, left.getHeight());
         Sector sectorRight = new Sector(division, 0, right.getWidth() - division, right.getHeight());
         left.setDrawSector(sectorLeft);

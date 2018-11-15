@@ -18,6 +18,14 @@ public class Image extends Drawable {
     private boolean notLoaded = true;
     private boolean stale = false;
 
+    public Image(Image other) {
+        super(other.getParent());
+        this.img = other.img.copy();
+        this.drawSector = other.drawSector;
+        this.format = new ColorFormat(other.format);
+        this.edge = new EdgeHealer(other.edge);
+    }
+
     public Image(String file, PApplet parent) {
         super(parent);
         img = parent.loadImage(file);

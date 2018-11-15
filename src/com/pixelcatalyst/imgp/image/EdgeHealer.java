@@ -7,6 +7,14 @@ public class EdgeHealer {
     private int bottom;
     private Healer healer;
 
+    public EdgeHealer(EdgeHealer other) {
+        this.left = other.left;
+        this.top = other.top;
+        this.right = other.right;
+        this.bottom = other.bottom;
+        healer = other.healer;
+    }
+
     public EdgeHealer(int left, int top, int right, int bottom) {
         this.left = left;
         this.top = top;

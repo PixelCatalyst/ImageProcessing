@@ -11,6 +11,13 @@ public class ColorFormat {
 
     private Channel[] channels;
 
+    public ColorFormat(ColorFormat other) {
+        channels = new Channel[CHANNEL_COUNT];
+        channels[0] = other.channels[0];
+        channels[1] = other.channels[1];
+        channels[2] = other.channels[2];
+    }
+
     public ColorFormat(Channel first, Channel second, Channel third) {
         channels = new Channel[CHANNEL_COUNT];
         channels[0] = first;

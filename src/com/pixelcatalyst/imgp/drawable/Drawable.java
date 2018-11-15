@@ -28,7 +28,7 @@ public abstract class Drawable {
         position.y = y;
     }
 
-    protected PApplet getParent() {
+    protected final PApplet getParent() {
         return parent;
     }
 

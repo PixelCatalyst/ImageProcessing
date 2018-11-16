@@ -41,11 +41,11 @@ public class TestFilter extends Filter {
         float localDominant = color.getMax();
         NormalizedColor modified;
         if (localDominant == color.red())
-            modified = color.clone().withRed(dominant).get();
+            modified = color.copy().withRed(dominant).get();
         else if (localDominant == color.green())
-            modified = color.clone().withGreen(dominant).get();
+            modified = color.copy().withGreen(dominant).get();
         else
-            modified = color.clone().withBlue(dominant).get();
+            modified = color.copy().withBlue(dominant).get();
 
         return fmt.expandToInt(modified);
     }

@@ -32,7 +32,7 @@ public class NormalizedColor {
         }
     }
 
-    public Cloner clone() {
+    public Cloner copy() {
         return new Cloner(this);
     }
 

@@ -40,7 +40,10 @@ public class ImageComparison extends Drawable {
         Sector sectorRight = new Sector(division, 0, right.getWidth() - division, right.getHeight());
         left.setDrawSector(sectorLeft);
         right.setDrawSector(sectorRight);
-        right.setX(division);
+        left.setX(getX());
+        left.setY(getY());
+        right.setX(division + getX());
+        right.setY(getY());
         left.draw();
         right.draw();
     }

@@ -15,11 +15,12 @@ public class ImageComparison extends Drawable {
 
     public ImageComparison(Image left, Image right, PApplet parent) {
         super(parent);
-        this.left = left;
-        this.right = right;
-        if ((left.getWidth() != right.getWidth()) || (left.getHeight() != right.getHeight()))
-            PApplet.println("Images in " + this.getClass().getSimpleName() + " should be the same size.");
-        width = Math.max(left.getWidth(), right.getWidth());
+        this.left = new Image(left);
+        this.right = new Image(right);
+        width = Math.min(left.getWidth(), right.getWidth());
+        int height = Math.min(left.getHeight(), right.getHeight());
+        this.left.resize(width, height);
+        this.right.resize(width, height);
         defRatio = 0.5f;
     }
 
@@ -39,14 +40,8 @@ public class ImageComparison extends Drawable {
         Sector sectorRight = new Sector(division, 0, right.getWidth() - division, right.getHeight());
         left.setDrawSector(sectorLeft);
         right.setDrawSector(sectorRight);
-        int xSaved = right.getX();
         right.setX(division);
-
         left.draw();
         right.draw();
-
-        left.setDrawSector(null);
-        right.setDrawSector(null);
-        right.setX(xSaved);
     }
 }
